@@ -1,0 +1,75 @@
+\documentclass[xcolor=svgnames]{beamer}
+\usetheme{theme1}
+\usepackage[backend=bibtex,bibstyle=numeric-comp]{biblatex}
+\newcommand{\aheader}[2]{\action<#1->{#2}}
+% first argument: slide number to appear from, second argument: content of header 
+\newcommand{\hiddencell}[2]{\action<#1->{#2}}
+% first argument: slide number to appear from, second argument: content of cell
+\newcommand{\putCitation}[2]{\footnotetext[#1]{\tiny{\citeauthor{#2} \citefield{#2}{shortjournal} \textbf{\citefield{#2}{volume}}, \citefield{#2}{pages} (\citeyear{#2})}}}
+
+\addbibresource{references.bib}
+
+\title{A Simple Presentation}
+\author{Ramachandran Subramanian}
+\institute[UB]{
+    Organized by: Computational Sciences Club (CSC)\\
+    Sponsored by: Graduate Student Association (GSA)
+}
+\date{November 13, 2015}
+
+\begin{document}
+    {
+        \setbeamertemplate{footline}{} 
+        \begin{frame}
+            \titlepage
+        \end{frame}
+    }
+    \addtocounter{framenumber}{-1}
+    \begin{frame}
+        \frametitle{Welcome to beamer}
+        \begin{center}
+            Hurray! Our first presentation!!!
+        \end{center}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Overlays}
+        \begin{itemize}
+            \item Pause
+            \item Action
+            \item Onslide
+            \item Only
+            \item ...
+        \end{itemize}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Pause}
+        One way of making \LaTeX~ wait is by using $\backslash$pause.
+        \begin{itemize}
+            \item No pause here.
+            \item Pause is included here. Beamer will wait for me to press a key or click the mouse. \pause
+            \item No pause here.\\
+        \end{itemize}
+        Writing $\backslash$pause after each bullet point is clearly not efficient. So we use the $[<+->]$ option along with itemize: $\backslash$begin\{itemize\}$[<+->]$.
+        \begin{itemize}[<+->]
+            \item Pause after each bullet point.
+            \item Pause after each bullet point.
+            \item Pause after each bullet point.
+        \end{itemize}
+    \end{frame}
+    \frame{
+        \frametitle{The power of overlays\footnote{\href{http://tex.stackexchange.com/questions/24499/}{http://tex.stackexchange.com/questions/24499/}}}
+        Here's my table:
+        \begin{tabular}{rrr}
+        \aheader{2}{Column A} & \aheader{3}{Column B} & \aheader{4}{Column C} \\
+        \hiddencell{2}{1} &     \hiddencell{3}{2} &     \hiddencell{4}{3} \\
+        \hiddencell{2}{4} &     \hiddencell{3}{5} &     \hiddencell{4}{6} \\
+        \hiddencell{2}{7} &     \hiddencell{3}{8} &     \hiddencell{4}{9}
+        \end{tabular}        
+    }
+    \begin{frame}
+        \frametitle{References in presentations}
+        To cite references, I use the custom made $\backslash$putCitation command:
+        From Ref\footnotemark[2], we know that
+        \putCitation{2}{Lepage1972}
+    \end{frame}
+\end{document}

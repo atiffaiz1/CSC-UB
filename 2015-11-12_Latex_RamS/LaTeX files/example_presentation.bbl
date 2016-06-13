@@ -1,0 +1,42 @@
+% $ biblatex auxiliary file $
+% $ biblatex version 2.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\entry{Lepage1972}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Lepage}{L.}%
+     {G~Peter}{G.~P.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{LGP1}
+  \strng{fullhash}{LGP1}
+  \field{sortinit}{L}
+  \field{number}{2}
+  \field{pages}{192 \bibrangedash  203}
+  \field{shortjournal}{J. Comp. Phys.}
+  \field{title}{A new algorithm for adaptive multidimensional integration}
+  \field{volume}{27}
+  \field{journaltitle}{Journal of Computational Physics}
+  \field{year}{1972}
+\endentry
+
+\lossort
+\endlossort
+
+\endinput

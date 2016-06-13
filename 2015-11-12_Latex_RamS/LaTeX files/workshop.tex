@@ -1,0 +1,294 @@
+\documentclass[xcolor=svgnames]{beamer}
+\usecolortheme[named=blue]{structure}
+\usetheme{theme1}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{showexpl}
+\lstloadlanguages{[LaTeX]Tex}
+\lstset{ 
+    explpreset={numbers=none,pos=b},
+    basicstyle=\ttfamily\small,
+    commentstyle=\itshape\ttfamily\small,
+    breaklines=false,
+    preset=\let\label\orilabel,
+    columns=flexible
+}
+\usepackage{array}
+\usepackage[backend=bibtex,bibstyle=numeric-comp]{biblatex}
+\newcommand{\putCitation}[2]{\footnotetext[#1]{\tiny{\citeauthor{#2} \citefield{#2}{shortjournal} \textbf{\citefield{#2}{volume}}, \citefield{#2}{pages} (\citeyear{#2})}}}
+\newcommand{\putCitations}[3]{\footnotetext[#1]{\tiny{\citeauthor{#2} \citefield{#2}{shortjournal} \textbf{\citefield{#2}{volume}}, \citefield{#2}{pages} (\citeyear{#2}); \citeauthor{#3} \citefield{#3}{shortjournal} \textbf{\citefield{#3}{volume}}, \citefield{#3}{pages} (\citeyear{#3})}}}
+
+\addbibresource{references.bib}
+
+\title{Introductory workshop on \LaTeX}
+\author{Ramachandran Subramanian}
+\institute[UB]{
+    Department of Chemical and Biological engineering, University at Buffalo\\
+    Organized by: Computational Sciences Club (CSC)\\
+    Sponsored by: Graduate Student Association (GSA)
+}
+\date{November 13, 2015}
+
+\begin{document}
+\let\orilabel\label
+%\maketitle
+{
+    \setbeamertemplate{footline}{} 
+    \begin{frame}
+        \titlepage
+    \end{frame}
+}
+\addtocounter{framenumber}{-1}
+
+\section{Contents}
+\begin{frame}
+    \frametitle{What this workshop is NOT about?}
+    \begin{itemize}
+        \item \LaTeX~ in Windows or Mac.
+        \item History of \LaTeX~(who developed it, when was it developed and for whom it was developed).
+        \item Where to find and install \LaTeX~, and other packages (see Recommended Links section).
+        \item List of options for different packages and demonstrate what each one does.
+        \item Executing one command at a time and showing you the output.
+        \item Details about what happens behind the scenes in \LaTeX~ (because I don't have much understanding of those concepts myself!).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{What this workshop is all about?}
+    \begin{itemize}
+        \item \LaTeX~ in Linux.
+        \item Basic introduction to \LaTeX (how to write equations, insert graphics, insert tables etc. and referencing them throughout the document).
+        \item Making presentations and posters with the beamer package. Will go over the .tex file used to make this presentation!
+        \item References and bibliography.
+        \item Tips, tricks and good practices when using any form of \LaTeX.
+        \item Slides containing links that I personally recommend for beginners,intermediates and pros alike!
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Expectation vs. Reality}
+    \begin{table}
+        \begin{tabular}{ |c||m{8cm}| }
+            \hline
+            Level of experience & Expectation\\
+            \hline
+            Beginner & Understand the basics of \LaTeX\\
+                     & Grasp concepts, ask questions\\
+            \hline
+            Intermediate & Learn cool new stuff\\
+                         & Be amazed at the limits of \LaTeX\\
+            \hline
+            Pro & Learn how to do something better or new\\
+                & Give valuable inputs here and there\\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{frame}
+\begin{frame}
+    \frametitle{Expectation vs. Reality}
+    \begin{table}
+        \begin{tabular}{ |c||m{8cm}| }
+            \hline
+            Level of experience & Reality\\
+            \hline
+            Beginner & Stare off into the infinity and contemplate the meaning of life, universe and beyond\\
+            \hline
+            Intermediate & Aww man! I wasted a Friday evening for this?!\\
+                         & Seriously dude! I can make better documents on my grandma's typewriter\\
+            \hline
+            Pro & Hahahaha.., noob he totally misplaced that comma\\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{frame}
+\section{Introduction}
+\begin{frame}
+    \frametitle{What is \LaTeX?}
+    \begin{itemize}
+        \item Within the scientific community, \LaTeX~is a tool using which we can create ``professional-looking" documents like journal articles, books, flyers, leaflets, PhD theses, posters, presentations, r\'{e}sum\'{e}s etc.
+        \item Once you learn how to use \LaTeX~it is really easy to make such documents because it not only takes care of all the little annoying things but also offers many many features which would be quite difficult using conventional tools (like MS Word or LibreOffice Writer, for instance).
+        \item Simply put, its a miracle!
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Why should I use it?}
+    \begin{itemize}
+        \item Having to update the table of contents every time you add/delete a section from your thesis; dealing with figures moving all over the place and messing up the flow of text; updating cross-references, footnotes, etc.
+        \item Having to manually align bullet lists/text/figures/tables in different slides/pages of the document.
+        \item Automatically numbering equations, figures, tables and references; custom bibliography styles suited for different journals, posters, presentations etc.
+        \item My personal favorite: not having to worry about using the right line spacing/font/font size/indentation/margin size/equation number placement ...
+    \end{itemize}
+\end{frame}
+
+% Note: The indentation of all occurences of \begin{LTXexample} .. \end{LTXexample} are deliberately off (meaning, they are always placed at the beginning of the line). This is done so that output is clearly visible within the space of the frame in the .pdf file. \frame[containsverbatim] places the text as is and so any indentation will cause text to run off the screen in the output file. %
+\frame[containsverbatim]{
+    \frametitle{Let's jump right in!}
+    \begin{itemize}
+        \item Open any text editor and create a new file ``example.tex"
+\item \begin{LTXexample}[pos=r]
+\documentclass{article}
+\begin{document}
+Hello World!
+\tiny{tiny} ... \huge{huge}
+\end{document}
+\end{LTXexample}
+        \item Save and exit
+        \item Open a terminal, go to the directory containing the file and type ``pdflatex example.tex"
+        \item Et voil\`{a}!
+    \end{itemize}
+}
+\frame[containsverbatim]{
+    \frametitle{Lists and equations}
+\begin{LTXexample}
+\begin{itemize}
+\item Inline equation: $z^2 = \lim_{x \to 1} \frac{1+x}{1-x}$
+\item Centered equation: $$z^2 = \lim_{x \to 1} \frac{1+x}{1-x}$$
+\item \begin{enumerate} \item One \item Two \end{enumerate} 
+\end{itemize}
+\end{LTXexample}
+\begin{LTXexample}[pos=r]
+\begin{equation}
+x^2 + y^2 = z^2
+\end{equation}
+\end{LTXexample}
+}
+\frame[containsverbatim]{
+    \frametitle{Aligned and unnumbered equations}
+\begin{LTXexample}
+\begin{align}
+ax^2 + bx + c &= 0 \nonumber\\
+\Rightarrow x &= \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\end{align}
+\end{LTXexample}
+\begin{LTXexample}
+\begin{equation*}
+x^2 + y^2 = z^2
+\end{equation*}
+\end{LTXexample}
+}
+\frame[containsverbatim]{
+    \frametitle{Labels, figures and referencing}
+\begin{LTXexample}
+\begin{figure}
+\centering
+\includegraphics[keepaspectratio,scale=0.2]{image1.png}
+\caption{UB logo Google search}\label{logo}
+\end{figure}
+UB logo (Fig: \ref{logo}) can be referenced like this.
+\end{LTXexample}
+} 
+\frame[containsverbatim]{
+    \frametitle{Tables}
+\begin{LTXexample}
+\centering
+\begin{table}
+\begin{tabular}{ |l||c| }
+\hline
+Name & Age\\
+\hline
+Jane & 30\\
+\hline
+John & 14\\
+\hline
+\end{tabular}
+\end{table}
+\end{LTXexample}
+}
+
+\section{References and bibliography}
+
+\frame[containsverbatim]{
+    \frametitle{How to create a bibliography file and add references}
+    Go to the directory where your ``.tex" file exists. Open any text editor and create the file ``references.bib" 
+\begin{LTXexample}
+@article{Lepage1972,
+author = "G Peter Lepage",
+title = "A new algorithm for adaptive multidimensional integration",
+journal = "Journal of Computational Physics",
+shortjournal = "J. Comp. Phys.",
+year = "1972",
+volume = "27",
+number = "2",
+pages = "192 -- 203"
+}
+\end{LTXexample}
+}
+\frame[containsverbatim]{
+    \frametitle{How to cite references}
+\begin{LTXexample}
+\documentclass{article}
+\begin{document}
+\usepackage[backend=bibtex,bibstyle=numeric-comp]{biblatex}
+From Ref\cite{Lepage1972}, we know that ...
+\bibliography{references}
+\end{document}
+\end{LTXexample}
+}
+
+\begin{frame}
+    \frametitle{Compiling the references}
+    \begin{itemize}
+        \item ``pdflatex example.tex" 
+        \item ``bibtex example.aux" 
+        \item ``pdflatex example.tex" 
+        \item ``pdflatex example.tex" 
+    \end{itemize}
+\end{frame}
+\section{Beamer}
+\begin{frame}
+    \frametitle{Making presentations with the beamer class}
+    \begin{itemize}
+        \item Slides are referred to as `frames' within beamer.
+        \item Tons of themes available to choose from (see Recommended links). Customization possible for any theme.
+        \item Overlays are powerful and, if used properly, can be very effective in conveying the right message.
+        \item Let us look at a simple example before we can look at the .tex file for this presentation.
+    \end{itemize}
+\end{frame}
+\section{Tips and tricks}
+\frame[containsverbatim]{
+    \frametitle{Good practices/tips/tricks}
+    \begin{itemize}
+        \item When dealing with fractions, use the right size brackets: 
+\begin{LTXexample}[pos=r]
+$(\displaystyle\frac{1}{2})$
+$\bigg(\displaystyle
+\frac{1}{2}\bigg)$
+\end{LTXexample}
+        \item Finding the exact source of the error might be a problem. Always start with a Minimum Working Example (MWE). If need be, delete recently added lines and compile as often as possible. Refer to the documentation file associated with packages as they are extremely useful.
+        \item When inserting figures, it is generally advisable to use the ``keepaspectratio" option to avoid pixelated look.
+        \item If you want to comment out multiple lines, use $\backslash$iffalse .. $\backslash$fi instead of using \% symbol before start of each line.
+        \item Get acquainted with the $\backslash$newcommand so you can cater exactly according to your needs (Remember: with great power comes great responsibility!).
+    \end{itemize}
+}
+\begin{frame}
+    \frametitle{Good practices/tips/tricks}
+    \begin{itemize}
+        \item Maintain a master bibliography file containing all the references and keep updating it as and when you find a new paper. 
+        \item Proper indentation of your source (.tex) file will save you many hours of trying to find the missing \$ (if you know what I mean).
+        \item Treat your \LaTeX~ file just like you would, your python script. Never start from scratch, copy paste some code from the web (feel free to use this file!) and build on it and customize it.
+        \item Best way to learn \LaTeX~ : experimentation!
+    \end{itemize}
+\end{frame}
+
+\section{Recommended links}
+\begin{frame}
+    \begin{itemize}
+        \item Download \LaTeX (TeX Live) \href{https://www.tug.org/texlive/}{\color{blue}\underline{here}}. Tex Live comes with most commonly used packages and it is extremely easy to download and install any new packages that aren't part of it. (Highly recommended!)
+        \item Basics:
+            \begin{enumerate}
+                \item An excellent place to start - \href{http://www.artofproblemsolving.com/wiki/index.php?title=LaTeX:Basics}{\color{blue}\underline{Art of problem solving}}
+                \item A good source with a lot of examples - \href{https://en.wikibooks.org/wiki/LaTeX}{\color{blue}\underline{Wiki books}}
+                \item An extensive beamer \href{https://www.uncg.edu/cmp/reu/presentations/Charles\%20Batts\%20-\%20Beamer\%20Tutorial.pdf}{\color{blue}\underline{tutorial}}
+            \end{enumerate}
+        \item Advanced:
+            \begin{enumerate}
+                \item How to create \href{http://gabrielelanaro.github.io/blog/2014/12/01/latex-bibliography-in-5-minutes.html}{\color{blue}\underline{custom bibliography style}} for different journals. One makebst command to rule them all!
+                \item Avoiding jumping frames in beamer, a common problem one might face when using beamer. \href{http://tex.stackexchange.com/questions/148/avoiding-jumping-frames-in-beamer}{\color{blue}\underline{Explained here}}
+            \end{enumerate}
+        \item Templates: An exhaustive list can be found \href{http://www.latextemplates.com/}{\color{blue}\underline{here}}
+        \item Questions: chances are, someone else would have ran into the same problem that you did. Check \href{http://www.tex.stackexchange.com/}{\color{blue}\underline{here}} first to see if it has been solved and save yourself a lot of time!
+    \end{itemize}
+\end{frame}
+\end{document}
