@@ -1,0 +1,45 @@
+Slide tilte - AWK basics
+echo "This is an example" | awk '{print $1, $4}'
+awk '/2/ {print $0}' ex2Col.dat
+awk '/2/ || /H/ {print $0}' ex2Col.dat
+awk '/2/ {print $0} /H/ {print $1}' ex2Col.dat
+awk '/2/ {$2 = 2; print $0}' ex2Col.dat
+awk '{print $1}' ex2Col.dat
+
+Slide title - Some predefined variables - command line examples
+awk '{print NR}' exText.dat
+awk '{print NF}' exText.dat
+awk '{print $NR}' exText.dat
+awk '{if (NR % 2 == 0) print; }' ex2Col.dat
+awk '{if (NR % 2 == 0) print $1; else print $2;}' ex2Col.dat
+
+Slide title - Key aspects - command line examples
+awk 'BEGIN {FS = ","} {print $NR}' exCSV.dat
+awk 'BEGIN {FS = "\t"} {print $NR}' exTSV.dat
+awk '{sum += NF} END {print sum}' exText.dat
+awk 'END {print NR}' ex2Col.dat
+awk '{if ($1 % 2 == 0) next; print;}' ex2Col.dat
+awk '{if ($1 < 0) {print NR; next;} if ($2 ~ /[a-z]/) {print NR; next;} }' ex2ColErr.dat
+awk '{if (NR == 2) NR = 8; printNR;}' ex3Col.dat
+awk '{if (NR >= 2 && NR <= 8) next; print;}' ex3Col.dat
+awk -v k=2 '{print k+$1,$2;}' ex2Col.dat
+awk '{print k+$1,$2;}' k=2 ex2Col.dat
+for i in 2 4 6 8 10; do awk -v i=$i '{if ($1 == i) print;}' ex2Col.dat; done
+
+Slide title - Pipe as input instead of a file - command line examples
+ls -l | awk '{ if ($6 == "Mar") sum += $5;} END {print sum;}'
+
+Slide title - Multiple input files - command line examples
+awk '{if (FNR == NR) {f1c2[FNR] = $2;} else {f2c2[FNR] = $2; f2c3[FNR] = $3;}} END {for (i=1; i<=FNR; i++) {print f1c2[i],f2c2[i],f2c3[i];}}' ex2Col.dat ex3Col.dat
+awk '{print $1, $1*rand()+20;}' ex2Col.dat > ex2ColRandom.dat
+awk '{if (ARGIND == 1) {f1c1[FNR] = $1; f1c2[FNR] = $2; max = NR;} else if (ARGIND == 2) {f2c2[FNR] = $2; f2c3[FNR] = $3;} else f3c2[FNR] = $2;} END {for (i=1; i<=max; i++) print f1c1[i],f1c2[i],f2c2[i],f2c3[i],f3c2[i];}' ex2Col.dat ex3Col.dat ex2ColRandom.dat
+grep 'Temperature: 100' sim*.out
+t=100; p=8; awk -v flag=0 -v t=$t -v p=$p '{if (/Temperature/ && $2 == t) flag = 1; if (flag && /nBeads/ && $2 == p) {print FILENAME; flag = 0;} if (flag && /nBeads/ && $2 != p) flag = 0;}' sim*.out
+awk '{c[NR] = $n;} END {for (i=1; i<=FNR; i++) {print c[i],c[i+FNR];}}' n=2 ex2Col.dat n=3 ex3Col.dat
+
+Slide title - AWK script files
+awk -f argCargV k=2 sim1.out k=3 sim2.out
+
+Slide title - AWK script files for processing data
+oct2014
+ls -l | awk '{if ($6 == "Mar") sum += $5; if ($2 ~ /[a-z]/) print $0;} END {print sum;}' ex2Col.dat - ex2ColErr.dat

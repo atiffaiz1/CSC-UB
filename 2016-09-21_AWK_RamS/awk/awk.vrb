@@ -1,0 +1,14 @@
+\frametitle{How to cite references}
+    \begin{verbatim}
+\documentclass{article}
+\usepackage[backend=bibtex,bibstyle=numeric-comp]{biblatex}
+\bibliographystyle{myBibStyle}
+\begin{document}
+From Ref\cite{Schrodinger1926}, we know that
+cats don't necessarily have 9 lives!!!
+\bibliography{references}
+\end{document}
+    \end{verbatim}
+    From Ref[1], we know that cats don't necessarily have 9 lives!!!
+    \textbf{References:\\}
+    [1] Schr\"{o}dinger, E.: Cat experiments gone wrong, J. Fel. Phys. 7, 198 -- 203 (1926)

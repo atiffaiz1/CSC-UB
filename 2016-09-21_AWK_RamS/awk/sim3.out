@@ -1,0 +1,45 @@
+nSpheres set explicitly
+Temperature: 200
+computing pairwise contribution
+individual clusters:
+ (-1/2) 1
+
+sigmaHSRef: 3.0
+B2HS: 56.548667764616276
+100000000 steps (1000 blocks of 100000)
+regrow full ring
+setting initial ref pref to 1.0
+setting ref pref to 1.0
+equilibration finished
+MC Move step sizes (ref)    1.0
+MC Move step sizes (target) 1.0
+final reference step fraction NaN
+actual reference step fraction 0.99
+nBeads: 8
+Reference system: 
+class etomica.virial.MCMoveChangeBondLength Box0 acceptance ratio: 0.5036363443885948
+class etomica.virial.MCMoveClusterRingRegrowOrientation Box0 acceptance ratio: 2.306655278602496E-5
+Target system: 
+class etomica.virial.MCMoveChangeBondLength Box1 acceptance ratio: 0.5460467138959716
+class etomica.virial.MCMoveClusterRingRegrowOrientation Box1 acceptance ratio: 3.712680614334988E-4
+ratio average: 1.0 error: 0.0
+abs average: 56.548667764616276 error: 0.0
+reference ratio average: 2.000000000000000e+00 error:  0.00000e+00  cor: 0.0000
+reference average: 1.000000000000000e+00 stdev: 0.0000e+00 error: 0.0000e+00 cor: 0.0000
+reference overlap average: 5.000000000000000e-01 stdev: 0.0000e+00 error: 0.000e+00 cor: 0.0000
+target ratio average: 2.000000000000000e+00  error: 0.00000e+00  cor: 0.0000
+target average: 1.000000000000000e+00 stdev: 0.0000e+00 error: 0.0000e+00 cor: 0.0000
+target overlap average: 5.000000000000000e-01 stdev: 0.0000e+00 error: 0.0000e+00 cor: 0.0000
+diagram 1 average: -2.000000000000000e+00  error: 0.000000000000000e+00  ocor: 0.0000
+time: 1.5406597222222222 hrs
+100.0 0.9350719606507032 1.0508810886059043E-4 0.9670403681609505
+100.0 02 0.878389302533722 0.003393053448082338 0.9891263286898744
+100.0 13 0.8488395610036733 0.0020580555051948643 0.968051289877995
+100.0 04 0.7625870629483196 0.003776353270746224 0.9753193304778134
+100.0 15 0.6276542397997447 0.007039813866517846 0.9928969616769558
+100.0 26 0.8592707077141136 0.0017814676260973158 0.8928869804739478
+100.0 37 0.8821301003543972 0.0025062259461198903 0.9443087850618821
+Old
+avgBL: 100.0 0.07570198082675875 1.3213599771300189E-6 0.6158664932185508
+or = FANCY bl = FANCY
+deleteMode = true

@@ -1,0 +1,40 @@
+Potential level = hindePatkowski
+Subtract what = none
+bl Option = variable
+nSpheres set explicitly
+H2-H2 Path Integral (16-mer chains) B2 at 100.0K
+computing pairwise contribution
+individual clusters:
+ (-1/2) 1
+
+sigmaHSRef: 3.0
+B2HS: 56.548667764616276
+10000000 steps (1000 blocks of 10000)
+regrow full ring
+setting initial ref pref to 1.9582416234000632
+setting ref pref to 1.8798790817486268
+equilibration finished
+MC Move step sizes (ref)    4.465387328545435
+MC Move step sizes (target) 5.9176949136896
+final reference step fraction 0.003109547877561909
+actual reference step fraction 0.01
+Reference system: 
+class etomica.virial.MCMoveClusterMoleculeMulti Box0 acceptance ratio: 0.49240638002773923
+class etomica.virial.MCMoveClusterRingRegrow Box0 acceptance ratio: 1.0
+class etomica.virial.MCMoveClusterRingRegrowOrientation Box0 acceptance ratio: 0.6123732037193576
+class etomica.virial.MCMoveChangeBondLength Box0 acceptance ratio: 0.4624807299695846
+Target system: 
+class etomica.virial.MCMoveClusterMoleculeMulti Box1 acceptance ratio: 0.5014905334774296
+class etomica.virial.MCMoveClusterRingRegrow Box1 acceptance ratio: 0.9720800596466365
+class etomica.virial.MCMoveClusterRingRegrowOrientation Box1 acceptance ratio: 0.6079494101909279
+class etomica.virial.MCMoveChangeBondLength Box1 acceptance ratio: 0.4763864355358622
+ratio average: -0.06554659694513976 error: 0.0034691414424537076
+abs average: -3.70657273375192 error: 0.1961753268577764
+reference ratio average: 3.144893823235645e+00 error:  5.16340e-03  cor: 0.0000
+reference average: 1.000000000000000e+00 stdev: 0.0000e+00 error: 0.0000e+00 cor: 0.0000
+reference overlap average: 3.179757588671605e-01 stdev: 5.8142e-02 error: 5.221e-04 cor: -0.0669
+target ratio average: -2.061370878668864e-01  error: 1.09048e-02  cor: 0.9933
+target average: -3.456161616161616e-02 stdev: 9.9940e-01 error: 1.7643e-03 cor: 0.0222
+target overlap average: 1.676632600142989e-01 stdev: 1.7819e-01 error: 3.1274e-04 cor: 0.0247
+diagram 1 average: 6.912323232323232e-02  error: 3.528576504343862e-03  ocor: -0.9933
+time: 8.442954166666667 hrs
